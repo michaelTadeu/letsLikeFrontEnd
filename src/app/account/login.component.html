@@ -1,27 +1,31 @@
-<div class="card">
+﻿<div class="card">
     <h4 class="card-header">Login</h4>
     <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control"/>
-                <!-- <input type="text" formControlName="username" class="form-control" 
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-                <div *ngIf="submitted && f.username.required">
-                    <div *ngIf="f.username.errors.required">Username é obrigatório</div> 
-                </div> -->
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username é obrigatório</div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="text" formControlName="senha" class="form-control"/>
-                <!-- <input type="password" formControlName="senha" class=form-control
-                    [ngClass]="{ 'is-invalid': submitted && f.senha.errors }"/>
-                <div *ngIf="submitted && f.senha.required">
-                    <div *ngIf="f.senha.errors.required">Senha é obrigatório</div>
-                </div> -->
+                <label for="password">Senha</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Senha é obrigatóio</div>
+                </div>
             </div>
-            <!-- Confirmar Senha -->
-
+            <a routerLink="../cadastrarUsuario" class="btn btn-link">Cadastrar Usuário</a>
+            <a routerLink="../recuperarSenha" class="btn btn-link">Recuperar senha</a>
+            <br>
+            <br>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Entrar
+                </button>
+            </div>         
         </form>
     </div>
 </div>

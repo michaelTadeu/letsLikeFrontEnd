@@ -1,10 +1,11 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MyMaterialModule } from "../material";
-import { AccountRoutingModule } from "./account-routing.module";
-import { LayoutComponent } from "./layout.component";
-import { LoginComponent } from "./login.component";
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { AccountRoutingModule } from './account-routing.module';
+import { LayoutComponent } from './layout.component';
+import { LoginComponent } from './login.component';
+import { MyMaterialModule } from '@app/material';
 
 @NgModule({
     imports: [
@@ -18,4 +19,4 @@ import { LoginComponent } from "./login.component";
         LoginComponent
     ]
 })
-export class AccountModule { } 
+export class AccountModule { }
