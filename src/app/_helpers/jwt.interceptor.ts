@@ -7,6 +7,8 @@ import { AccountService } from '@app/_services';
 export class JwtInterceptor implements HttpInterceptor {
     constructor(private accountService: AccountService) { }
 
+    // Scripts para simular requisições no backend (sem subir o back-end)
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request);
     }

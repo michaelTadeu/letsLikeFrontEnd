@@ -7,7 +7,7 @@ import { AlertService } from '@app/_services';
 
 @Component({ selector: 'alert', templateUrl: 'alert.component.html' })
 export class AlertComponent implements OnInit, OnDestroy {
-    @Input() id = 'default-alert';
+    @Input() idUser = 'default-alert';
     @Input() fade = true;
 
     alerts: Alert[] = [];
@@ -17,7 +17,14 @@ export class AlertComponent implements OnInit, OnDestroy {
     constructor(private router: Router, private alertService: AlertService) { }
 
     ngOnInit() {
-       
+       this.alertSubscription = this.alertService.onAlert(this.idUser)
+            .subscribe(alert => {
+                if (!alert.message) {
+                    this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
+                }
+                this.alerts.forEach(x => delete x.keepAfterRouteChange);
+                return;
+            })
     }
 
     ngOnDestroy() {

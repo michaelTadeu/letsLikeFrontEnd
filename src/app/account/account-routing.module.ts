@@ -5,6 +5,9 @@ import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 import { RecoverPasswordComponent } from './recoverPassword.component';
 
+// Modulo de account que realiza toda a estrutura de "Login"
+// *Dica modularizar o account*
+
 const routes: Routes = [
     {
         path: '', component: LayoutComponent,
