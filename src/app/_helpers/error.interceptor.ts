@@ -10,15 +10,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor(private accountService: AccountService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return next.handle(request).pipe(catchError(err => {
-            if ([401, 403].includes(err.status) && this.accountService.userValue) {
-                // logout automático, se a resposta 401 ou 403 for retornada da api
-                
-            }
-
-            const error = err.error?.message || err.statusText;
-            console.error(err);
-            return throwError(error);
-        }))
+        
+        return throwError("teste");
     }
 }
