@@ -5,4 +5,3 @@
     email: string;
     senha: string;
 }
-

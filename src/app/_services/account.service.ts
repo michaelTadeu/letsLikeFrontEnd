@@ -11,6 +11,7 @@ import { User } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
+    loginSucesso: boolean = false;
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 
@@ -27,6 +28,22 @@ export class AccountService {
     }
 
     login(username, password) {
-      return false;
+        return this.http.post<boolean>(`${environment.apiUrl}/api/login`, { username, password } )
+            .pipe(map(login => {
+                localStorage.setItem('login', JSON.stringify(login));
+                this.loginSucesso = true;
+            }));
+        // if (this.loginSucesso) {
+        //     console.log('Usuário Logado');
+        // }
+    }
+
+    logout() {
+        localStorage.removeItem('login');
+        this.router.navigate(['/account/login']);
+    }
+
+    register(user: User) {
+        
     }
 }
