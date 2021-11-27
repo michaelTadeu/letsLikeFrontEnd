@@ -1,1 +1,15 @@
-﻿<h1>Olá, agora vocês vão criar a tela de cadasto de Usuário</h1>
+﻿<div class="card">
+    <h4 class="card-header">Cadastro de Usuário</h4>
+    <div class="card-body">
+        <div [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" formControlName="nome" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"/>
+                <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+                    <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
