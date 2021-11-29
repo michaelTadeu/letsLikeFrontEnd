@@ -1,6 +1,6 @@
-# LetsLikeFrontEnd
+# Projeto Final - Angular Let's Like 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+O propósito desse desafio é a criação de frontend em Angular para um cadastro de projetos e Likes. Esse projeto contém login, listas, rotas, acesso ao back-end em .net core. As imagens abaixo são apenas uma ilustração da funcionalidade desejada:
 
 ## Development server
 
