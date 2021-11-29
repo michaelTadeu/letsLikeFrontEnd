@@ -2,6 +2,8 @@
 
 O propósito desse desafio é a criação de frontend em Angular para um cadastro de projetos e Likes. Esse projeto contém login, listas, rotas, acesso ao back-end em .net core. As imagens abaixo são apenas uma ilustração da funcionalidade desejada:
 
+![Alt Text](.github/images/Login.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
