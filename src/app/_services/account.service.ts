@@ -27,15 +27,22 @@ export class AccountService {
         return this.userSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<boolean>(`${environment.apiUrl}/api/login`, { username, password } )
-            .pipe(map(login => {
-                localStorage.setItem('login', JSON.stringify(login));
-                this.loginSucesso = true;
-            }));
-        // if (this.loginSucesso) {
-        //     console.log('Usuário Logado');
-        // }
+    login(username: string, senha: string) {
+        const url = environment.apiUrl + 'api/login/';
+        const msgBody = { username: username, senha: senha };
+        const headers = { 'Content-Type': 'application/json' };
+        const options = { headers: headers };
+        const response = this.http.post<boolean>(url, msgBody, options);
+        console.log(response);
+        return response;
+
+        // console.log(username, password);
+        // return this.http.post<boolean>(`${environment.apiUrl}/api/login`, { username, password } )
+        //     .pipe(map(login => {
+        //         localStorage.setItem('login', JSON.stringify(login));
+        //         this.loginSucesso = true;
+        //     }));
+        
     }
 
     logout() {
