@@ -10,6 +10,47 @@
                     <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" placeholder="email@email.com"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">E-mail é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.required">Username  é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.senha.errors }"/>
+                <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+                    <div *ngIf="f.senha.required">Senha  é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmarSenha">Confirmar Senha</label>
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.confirmarSenha.errors }"/>
+                <div *ngIf="submitted && f.confirmarSenha.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmarSenha.required">Confirmar Senha é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" style="margin:0 230px;" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Salvar
+                </button>
+                <button class="btn btn-danger" (click)="cancelar()">
+                    Cancelar
+                </button>
+            </div>
         </div>
     </div>
 </div>

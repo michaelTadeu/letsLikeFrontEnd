@@ -2,7 +2,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'register.component.html' })
@@ -21,7 +20,11 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
        this.form = this.formBuilder.group ({
-           nome: ['', Validators.required]
+           nome: ['', Validators.required],
+           email: ['', Validators.required],
+           username: ['', Validators.required],
+           senha: ['', Validators.required],
+           confirmarSenha: ['', Validators.required]
        })
     }
 
@@ -30,9 +33,32 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit() {
-        // Verificar se todos campos obrigatórios foram preenchidos
-        
-        //Service para mandar as informações para o back-end
-        //Retorna para nossa tela de Login
+        this.submitted = true;
+
+        this.alertService.clear();
+
+        if (this.form.invalid) {
+            return;
+        }
+
+        this.loading = true;
+
+        this.accountService.register(this.form.value)
+            // Pipe?
+            .pipe(first())
+            .subscribe({
+                next: () => {
+                    this.alertService.success('Usuário salvo com sucesso', { keepAfterRouteChange: true});
+                    this.router.navigate(['../login'], { relativeTo: this.route});
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            });
+    }
+
+    cancelar() {
+        this.router.navigate(['login']);
     }
 }

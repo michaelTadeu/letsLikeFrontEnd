@@ -28,6 +28,7 @@ export class AccountService {
     }
 
     login(username: string, senha: string) {
+        console.log(username, senha);
         const url = environment.apiUrl + 'api/login/';
         const msgBody = { username: username, senha: senha };
         const headers = { 'Content-Type': 'application/json' };
@@ -51,6 +52,6 @@ export class AccountService {
     }
 
     register(user: User) {
-        
+        return this.http.post(`${environment.apiUrl}/api/usuario`, user);
     }
 }
