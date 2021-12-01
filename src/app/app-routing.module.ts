@@ -9,7 +9,7 @@ const projectModule = () => import('./project/project.module').then(x => x.Proje
 
 
 const routes: Routes = [
-    { path: '', component: ProjectComponent },
+    { path: '', component: ProjectComponent, canActivate: [AuthGuard] },
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
     { path: 'project', loadChildren: projectModule },
