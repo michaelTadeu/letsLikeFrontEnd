@@ -13,6 +13,7 @@
 /.vscode
 .github/*
 /.github
+*.github
 
 # profiling files
 chrome-profiler-events*.json
