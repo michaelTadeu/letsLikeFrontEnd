@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, ProjectService } from '@app/_services';
 
-@Component({ templateUrl: 'add-edit.component.html' })
-export class AddEditComponent implements OnInit {
+@Component({ templateUrl: 'project-add-edit.component.html' })
+export class ProjectAddEditComponent implements OnInit {
     form: FormGroup;
     submitted = false;
     loading = false;
@@ -34,6 +34,6 @@ export class AddEditComponent implements OnInit {
     }
 
     cancelar() {
-
+        this.router.navigate(['projects']);
     }
 }
