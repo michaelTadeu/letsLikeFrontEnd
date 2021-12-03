@@ -2,7 +2,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'register.component.html' })
@@ -20,18 +19,16 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.form = this.formBuilder.group ({
+        this.form = this.formBuilder.group({
             nome: ['', Validators.required],
             email: ['', Validators.required],
             username: ['', Validators.required],
-            senha: ['', Validators.required],
-            confirmarSenha: ['', Validators.required, Validators.minLength(6)]
+            confirmarSenha: ['', Validators.required],
+            senha: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 
-    get f() { 
-        return this.form.controls; 
-    }
+    get f() { return this.form.controls; }
 
     onSubmit() {
         this.submitted = true;
@@ -58,6 +55,6 @@ export class RegisterComponent implements OnInit {
     }
 
     cancelar() {
-        this.router.navigate(['login']);
-    }
+              this.router.navigate(['login']);
+          }
 }
