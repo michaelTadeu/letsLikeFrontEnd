@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User } from '@app/_models';
+import { Project, User } from '@app/_models';
 
 // Serviços que fazem a ponte com o back-end
 
@@ -14,6 +14,8 @@ export class ProjectService {
     loginSucesso: boolean = false;
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
+    private projectSubject: BehaviorSubject<Project>;
+    public project: Observable<Project>;
 
     constructor(
         private router: Router,
@@ -25,5 +27,13 @@ export class ProjectService {
 
     public get userValue(): User {
         return this.userSubject.value;
+    }
+
+    public get projectValue(): Project {
+      return this.projectSubject.value;
+  }
+
+    getAll() {
+        return this.http.get<Project[]>(`${environment.apiUrl}/api/Projeto`);
     }
 }

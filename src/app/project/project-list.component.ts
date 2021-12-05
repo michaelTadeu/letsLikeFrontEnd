@@ -1,16 +1,17 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { User } from '@app/_models';
-import { AccountService } from '@app/_services';
+import { AccountService, ProjectService } from '@app/_services';
+import { first } from 'rxjs/operators';
 
 @Component({ templateUrl: 'project-list.component.html' })
 export class ProjectListComponent implements OnInit {
-    user: User;
+    projects: any;
 
-    constructor(private accountService: AccountService) {
-        this.user = this.accountService.userValue;
-    }
+    constructor(private accountService: AccountService,
+      private projectService: ProjectService) {}
 
     ngOnInit() {
-        
+        this.projectService.getAll()
+        .pipe(first())
+        .subscribe(projects => this.projects = projects);
     }
 }
